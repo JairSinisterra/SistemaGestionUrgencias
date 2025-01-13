@@ -1,40 +1,33 @@
 package sistemaemergencias.controllers;
 
-public class Recurso {
-    private String id;
-    private boolean estaDisponible;
 
-    public Recurso(String id) {
-        this.id = id;
-        this.estaDisponible = true;
-    }
+// Clase base para los recursos
+// Define los atributos y comportamientos generales que comparten todos los recursos
+public abstract class Recurso {
+    private String nombre; // Nombre del recurso
+    private boolean disponible; // Indica si el recurso está disponible para atender emergencias
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    // Constructor que inicializa el nombre del recurso y lo marca como disponible
+    public Recurso(String nombre) {
+        this.nombre = nombre;
+        this.disponible = true;
     }
 
-    public boolean EstaDisponible() {
-        return estaDisponible;
+    // Getter para obtener el nombre del recurso
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDisponible(boolean estaDisponible) {
-        this.estaDisponible = estaDisponible;
-    }
-    public void asignar(){
-        estaDisponible = false;
+    // Getter para verificar si el recurso está disponible
+    public boolean isDisponible() {
+        return disponible;
     }
 
-    public void liberar(){
-        estaDisponible = true;
+    // Setter para cambiar el estado de disponibilidad del recurso
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
-    @Override
-    public String toString() {
-        return "Recurso{" + "id=" + id + ", estaDisponible=" + estaDisponible + '}';
-    }
-    
+    // Metodo abstracto que será implementado por las subclases para atender emergencias
+    public abstract void atenderEmergencia();
 }

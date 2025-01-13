@@ -2,25 +2,20 @@ package sistemaemergencias.services;
 
 import sistemaemergencias.controllers.Recurso;
 
+
 public class Ambulancia extends Recurso {
-    private String equipoEspecial; //Equipo especial de la ambulancia
 
-    public Ambulancia(String id, String equipoEspecial) {
-        super(id);
-        this.equipoEspecial = equipoEspecial;
+    // Constructor: Inicializa una nueva ambulancia con un nombre especifico.
+    public Ambulancia(String nombre) {
+        super(nombre); // Llama al constructor de la clase base Recurso con el nombre de la ambulancia.
     }
 
-    public String getEquipoEspecial() {
-        return equipoEspecial;
-    }
-
-    public void setEquipoEspecial(String equipoEspecial) {
-        this.equipoEspecial = equipoEspecial;
-    }
-
+    // Metodo sobrescrito de la clase base Recurso para atender emergencias con la ambulancia.
     @Override
-    public String toString() {
-        return super.toString() + ", equipoEspecial='" + equipoEspecial + "'";
-               
+    public void atenderEmergencia() {
+        // Imprime un mensaje indicando que la ambulancia está atendiendo la emergencia.
+        System.out.println(getNombre() + " está atendiendo a heridos");
+        setDisponible(false); // Marca la ambulancia como no disponible.
     }
 }
+
